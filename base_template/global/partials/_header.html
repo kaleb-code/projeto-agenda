@@ -4,44 +4,30 @@
             Agenda
         </a>
     </h1>
-
     <nav class="menu">
         <ul class="menu-list">
-            {% if user.is_authenticated %}
+    
+          {% if user.is_authenticated %}
             <li class="menu-item">
-                <a href="{% url 'contact:create' %}" class="menu-link">
-                    Criar Contato
-                </a>
+              <a href="{% url 'contact:create' %}" class="menu-link">Create</a>
             </li>
             <li class="menu-item">
-                <a href="{% url 'contact:user_update' %}" class="menu-link">
-                    Atualizar dados
-                </a>
+              <a href="{% url 'contact:user_update' %}" class="menu-link">Profile</a>
             </li>
             <li class="menu-item">
-                <a href="{% url 'contact:register' %}" class="menu-link">
-                    Registra usuario
-                </a>
+              <a href="{% url 'contact:logout' %}" class="menu-link">Logout</a>
             </li>
+          {% else %}
             <li class="menu-item">
-                <a href="{% url 'contact:logout' %}" class="menu-link">
-                    Logout
-                </a>
-            </li>
-            {% else %}
+              <a href="{% url 'contact:login' %}" class="menu-link">Login</a>
+            </li>      
             <li class="menu-item">
-                <a href="{% url 'contact:login' %}" class="menu-link">
-                    login
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="{% url 'contact:register' %}" class="menu-link">
-                    Registra usuario
-                </a>
-            </li>
-            {% endif %}
+              <a href="{% url 'contact:register' %}" class="menu-link">Register</a>
+            </li>      
+          {% endif %}
         </ul>
-    </nav>
+      </nav>
+    
 
     <div class="search">
         <form 
