@@ -15,20 +15,22 @@
         <p><b>PHONE:</b>{{contact.phone}}</p>
         <p><b>DESCRIPTION:</b>{{contact.description}}</p>
         <p><b>CATEGORY:</b>{{contact.category.name}}</p>
-        
+
+        {% if user == contact.owner  %}
         <div class="contact-links">
-            <a  href="{% url 'contact:update' contact.id %}">Update</a>
-      
-            <form action="{% url 'contact:delete' contact.id %}" method="POST">
-              {% csrf_token %}
-      
-              {% if confirmation == 'no' %}
-                <input type="hidden" name="confirmation" value="yes">
-                <button  type="submit">Confirma?</button>
-              {% else %}
-                <button  type="submit">Delete</button>
-              {% endif %}
-            </form>
-          </div>
-    </div>
+          <a  href="{% url 'contact:update' contact.id %}">Update</a>
+          
+          <form action="{% url 'contact:delete' contact.id %}" method="POST">
+            {% csrf_token %}
+            
+            {% if confirmation == 'no' %}
+            <input type="hidden" name="confirmation" value="yes">
+            <button  type="submit">Confirma?</button>
+            {% else %}
+            <button  type="submit">Delete</button>
+            {% endif %}
+          </form>
+        </div>
+        {% endif %}
+      </div>
 {% endblock content %}
